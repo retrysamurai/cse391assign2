@@ -212,16 +212,24 @@ body {
 .screen {
   margin: 0;
   margin-top: 20px;
+  padding: 10px;
   width: 600px;
   height: 400px;
   background-color: white;
+  border: 5px dashed black;
+}
+
+.screen p {
+  font-size: 1.5rem;
 }
 
 .screen #input-area {
-  width: inherit;
-  height: inherit;
-  background-color: rgb(219, 154, 97);
-  border: 5px dashed black;
+  padding: 5px;
+  width: 580px;
+  height: 380px;
+  font-size: 1.5rem;
+  resize: none;
+  outline: none;
 }
 
 .btns {
