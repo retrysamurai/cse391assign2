@@ -42,7 +42,7 @@ function showRandomQuote(e, elem) {
   const randomFont = Math.floor(Math.random() * fontArr.length);
 
   let btnBGCol = getComputedStyle(elem).backgroundColor;
-  let quoteContainer = document.querySelector(".quoteContainer");
+  let quoteContainer = document.querySelector(".quote-container");
   let randR = Math.floor(Math.random() * 255);
   let randG = Math.floor(Math.random() * 255);
   let randB = Math.floor(Math.random() * 255);
