@@ -10,6 +10,7 @@ const stripBlankBtn = document.getElementById("stp");
 
 let textNodeList = text;
 let textArr = [];
+let isToggled = false;
 
 function addNumFn() {
   textNodeList.forEach((element, index) => {
@@ -22,9 +23,17 @@ function capitalizeFn() {
     textArr[index] = element.innerHTML;
   });
 
-  textArr.forEach((element, index) => {
-    textNodeList[index].innerHTML = element.toUpperCase();
-  });
+  if (!isToggled) {
+    textArr.forEach((element, index) => {
+      textNodeList[index].innerHTML = element.toUpperCase();
+    });
+    isToggled = true;
+  } else {
+    textArr.forEach((element, index) => {
+      textNodeList[index].innerHTML = element.toLowerCase();
+    });
+    isToggled = false;
+  }
 }
 
 function clearAllFn() {

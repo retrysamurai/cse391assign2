@@ -54,13 +54,11 @@ function getRev(arr) {
   rev.innerHTML = container;
 }
 
-input.addEventListener("keydown", (e) => {
+input.addEventListener("input", (e) => {
   const series = input.value.split(", ");
-  if (e.key === "Enter") {
-    getMax(series);
-    getMin(series);
-    getSum(series);
-    getAvg(series);
-    getRev(series);
-  }
+  getMax(series);
+  getMin(series);
+  getSum(series);
+  getAvg(series);
+  getRev(series);
 });
