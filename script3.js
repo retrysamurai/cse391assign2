@@ -1,5 +1,3 @@
-let screen = document.querySelector(".screen");
-let text = document.querySelectorAll(".screen p");
 const addNumBtn = document.getElementById("add");
 const capitalizeBtn = document.getElementById("cap");
 const clearAllBtn = document.getElementById("clr");
@@ -8,91 +6,68 @@ const shuffleBtn = document.getElementById("shf");
 const sortBtn = document.getElementById("srt");
 const stripBlankBtn = document.getElementById("stp");
 
-let textNodeList = text;
-let textArr = [];
-let isToggled = false;
-
 function addNumFn() {
-  textNodeList.forEach((element, index) => {
-    textNodeList[index].innerHTML = `${index + 1}. ${element.innerHTML}`;
-  });
+  const textarea = document.querySelector("#input-text");
+  const textareaArr = textarea.value.split("\n");
+  let result = textareaArr.map((element, index) => `${index + 1}. ${element}`);
+  textarea.value = result.join("\n");
 }
 
-function capitalizeFn() {
-  textNodeList.forEach((element, index) => {
-    textArr[index] = element.innerHTML;
-  });
+let toggle = false;
 
-  if (!isToggled) {
-    textArr.forEach((element, index) => {
-      textNodeList[index].innerHTML = element.toUpperCase();
-    });
-    isToggled = true;
+function capitalizeFn() {
+  const textarea = document.querySelector("#input-text");
+  const textareaArr = textarea.value.split("\n");
+
+  if (toggle) {
+    let result = textareaArr.map((variable) => variable.toUpperCase());
+    toggle = false;
+    textarea.value = result.join("\n");
   } else {
-    textArr.forEach((element, index) => {
-      textNodeList[index].innerHTML = element.toLowerCase();
-    });
-    isToggled = false;
+    let result = textareaArr.map((variable) => variable.toLowerCase());
+    toggle = true;
+    textarea.value = result.join("\n");
   }
 }
 
 function clearAllFn() {
-  const childCount = screen.childElementCount;
-  for (i = 0; i < childCount; i++) {
-    screen.removeChild(screen.lastElementChild);
-  }
-
-  setTimeout(() => location.reload(), 1000);
+  const textarea = document.querySelector("#input-text");
+  textarea.value = "";
 }
 
 function reverseFn() {
-  textNodeList.forEach((element, index) => {
-    textArr[index] = element.innerHTML;
-  });
-
-  for (i = textArr.length - 1; i >= 0; i--) {
-    textNodeList[textArr.length - 1 - i].innerHTML = textArr[i];
-  }
+  const textarea = document.querySelector("#input-text");
+  const textareaArr = textarea.value.split("\n");
+  let result = textareaArr.map((variable) =>
+    variable.split("").reverse().join("")
+  );
+  textarea.value = result.join("\n");
 }
 
 function shuffleFn() {
-  textNodeList.forEach((element, index) => {
-    textArr[index] = element.innerHTML;
-  });
-
-  let randArr = [];
-
-  for (i = 0; i < textArr.length; i++) {
-    randArr.push(i);
-  }
-
-  for (i = randArr.length - 1; i > 0; i--) {
+  const textarea = document.querySelector("#input-text");
+  const textareaArr = textarea.value.split("\n");
+  for (i = textareaArr.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
-    [randArr[i], randArr[j]] = [randArr[j], randArr[i]];
+    [textareaArr[i], textareaArr[j]] = [textareaArr[j], textareaArr[i]];
   }
-
-  textNodeList.forEach((element, index) => {
-    textNodeList[index].innerHTML = textArr[randArr[index]];
-  });
+  textarea.value = textareaArr.join("\n");
 }
 
 function sortFn() {
-  textNodeList.forEach((element, index) => {
-    textArr[index] = element.innerHTML;
-  });
-
-  textArr = textArr.sort();
-
-  textArr.forEach((element, index) => {
-    textNodeList[index].innerHTML = textArr[index];
-  });
+  const textarea = document.querySelector("#input-text");
+  const textareaArr = textarea.value.split("\n");
+  let result = textareaArr.sort();
+  textarea.value = result.join("\n");
 }
 
 function stripBlankFn() {
-  const brTag = screen.getElementsByTagName("br");
-  while (brTag.length) {
-    brTag[0].parentNode.removeChild(brTag[0]);
-  }
+  const textarea = document.querySelector("#input-text");
+  const textareaArr = textarea.value.split("\n");
+  let result = textareaArr
+    .map((element) => element.trim())
+    .filter((element) => element.length > 0);
+  textarea.value = result.join("\n");
 }
 
 addNumBtn.addEventListener("click", addNumFn);

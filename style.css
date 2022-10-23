@@ -268,9 +268,12 @@ body {
 }
 
 .magic #input-text {
+  padding: 10px;
   width: 580px;
   height: 380px;
+  font-size: 1.2rem;
   resize: none;
+  outline: none;
 }
 
 /* ****-****-****-****-**** */
