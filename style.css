@@ -219,6 +219,10 @@ body {
   background-color: rgb(5, 100, 150);
   padding: 10px;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .magic p#magic-title {
@@ -261,6 +265,12 @@ body {
   /* width: 130px; */
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+.magic #input-text {
+  width: 580px;
+  height: 380px;
+  resize: none;
 }
 
 /* ****-****-****-****-**** */
